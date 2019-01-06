@@ -10,7 +10,7 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.beginPath();
   // UP
-  for (var i = CLOUD_X + CLOUD_RADUIS; i <= CLOUD_WIDTH - CLOUD_RADUIS * 2; i = i + (CLOUD_RADUIS * 2)) {
+  for (var i = CLOUD_X + CLOUD_RADUIS; i <= CLOUD_X + CLOUD_WIDTH - CLOUD_RADUIS * 2; i = i + (CLOUD_RADUIS * 2)) {
     ctx.arc(i, CLOUD_Y + CLOUD_RADUIS, CLOUD_RADUIS, 1 * Math.PI, 0 * Math.PI);
   }
 
@@ -37,6 +37,6 @@ var renderCloud = function (ctx, x, y, color) {
 
 window.renderStatistics = function (ctx, names, times) {
   // renderCloud(ctx, ((ctx.canvas.clientWidth - CLOUD_WIDTH) / 2), ((ctx.canvas.clientHeight - CLOUD_HEIGHT) / 2), 'rgba(50, 50, 50, 0.7)');
-  renderCloud(ctx, CLOUD_X + 100, CLOUD_Y + 100, 'rgba(50, 50, 50, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgb(255, 255, 255)');
+  renderCloud(ctx, CLOUD_X + 10, CLOUD_Y + 10, 'rgba(50, 50, 50, 0.7)');
 };
