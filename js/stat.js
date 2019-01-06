@@ -54,28 +54,27 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.font = '16px PT Mono';
   ctx.beginPath();
   // UP
-  for (var i = x + CLOUD_RADUIS; i <= x + CLOUD_WIDTH - CLOUD_RADUIS * 2; i = i + (CLOUD_RADUIS * 2)) {
+  for (var i = x + CLOUD_RADUIS; i <= (x + CLOUD_WIDTH) - (CLOUD_RADUIS * 2); i = i + (CLOUD_RADUIS * 2)) {
     ctx.arc(i, y + CLOUD_RADUIS, CLOUD_RADUIS, 1 * Math.PI, 0 * Math.PI);
   }
 
   // RIGHT
-  for (var j = y + CLOUD_RADUIS; j <= CLOUD_HEIGHT + y; j = j + (CLOUD_RADUIS * 2)) {
+  for (var j = y + CLOUD_RADUIS; j <= (CLOUD_HEIGHT + y); j = j + (CLOUD_RADUIS * 2)) {
     ctx.arc(CLOUD_WIDTH + x - CLOUD_RADUIS, j, CLOUD_RADUIS, 1.5 * Math.PI, 0.5 * Math.PI);
   }
 
   // BOTTOm
-  for (var n = CLOUD_WIDTH + x - (CLOUD_RADUIS * 2); n >= x; n = n - (CLOUD_RADUIS * 2)) {
+  for (var n = (CLOUD_WIDTH + x) - (CLOUD_RADUIS * 2); n >= x; n = n - (CLOUD_RADUIS * 2)) {
     ctx.arc(n, CLOUD_HEIGHT + y, CLOUD_RADUIS, 0 * Math.PI, 1 * Math.PI);
   }
 
   // LEFT
-  for (var k = CLOUD_HEIGHT + y; k >= y + CLOUD_RADUIS; k = k - (CLOUD_RADUIS * 2)) {
+  for (var k = CLOUD_HEIGHT + y; k >= (y + CLOUD_RADUIS); k = k - (CLOUD_RADUIS * 2)) {
     ctx.arc(x, k, CLOUD_RADUIS, 0.5 * Math.PI, 1.5 * Math.PI);
   }
 
   ctx.closePath();
   ctx.fill();
-  // ctx.stroke();
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -93,7 +92,6 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillText(Math.round(times[j]), CLOUD_X + GAP + (STRING_WIDTH + GAP) * j, CLOUD_HEIGHT - ((barHeight * times[j]) / maxTime + GAP_UP));
     ctx.fillText(names[j], CLOUD_X + GAP + (STRING_WIDTH + GAP) * j, CLOUD_Y + CLOUD_HEIGHT);
     ctx.fillStyle = getFillColumn(names[j]);
-    // ctx.fillRect(CLOUD_X + GAP + (STRING_WIDTH + GAP) * j, CLOUD_Y - GAP_UP, STRING_WIDTH + 100, (-barHeight * times[j]) / maxTime);
-    ctx.fillRect(CLOUD_X, CLOUD_Y, CLOUD_X + GAP, CLOUD_Y + 100);
+    ctx.fillRect(CLOUD_X + GAP + (STRING_WIDTH + GAP) * j, CLOUD_HEIGHT - ((barHeight * times[j]) / maxTime + GAP_UP), STRING_WIDTH, ((barHeight * times[j]) / maxTime + GAP_UP));
   }
 };
